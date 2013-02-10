@@ -26,12 +26,14 @@ module.exports = ToggleButton;
  */
 
 function ToggleButton( el ) {
+  if( !( this instanceof ToggleButton ) ) return new ToggleButton( el );
 
   Emitter.call( this );
 
   this.el      = el;
   this.status  = true;
 
+  classes( this.el ).add( 'toggle-button' );
   var handleEl = domify( '<div class="handle" />' )[0];
       elStyle  = style( this.el ),
       height   = parseInt( elStyle.height, 10 ),
