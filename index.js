@@ -3,6 +3,8 @@
  */
 
 var domify = require( 'domify' ),
+    events = require( 'events' ),
+    classes = require( 'classes' ),
     Drag   = require( 'drag' ),
     inherit = require( 'inherit' ),
     Emitter = require( 'emitter' ),
@@ -27,7 +29,8 @@ function ToggleButton( el ) {
 
   Emitter.call( this );
 
-  this.el = el;
+  this.el      = el;
+  this.status  = true;
 
   var handleEl = domify( '<div class="handle" />' )[0];
       elStyle  = style( this.el ),
@@ -49,6 +52,9 @@ function ToggleButton( el ) {
   this.bind();
 }
 
+/**
+ * Inherit `Emitter`
+ */
 
 inherit( ToggleButton, Emitter );
 
@@ -58,9 +64,30 @@ inherit( ToggleButton, Emitter );
 
 ToggleButton.prototype.bind = function() {
   var self = this;
+  
   this.handle.on( 'dragend', function( e ){
     self.slide( self.checkStatus( self.handle.x ) )
   } );
+
+  this.events = events( this.el, this );
+  
+  if ( 'ontouchstart' in document.documentElement ) {
+    this.events.bind( 'touchstart' );
+  } else{
+    this.events.bind( 'click', 'ontouchstart' );
+  }
+};
+
+/**
+ * touchstart
+ */
+
+ToggleButton.prototype.ontouchstart = function( e ) {
+  e.preventDefault();
+  e.stopPropagation();
+  if ( !classes( e.target ).has( 'handle' ) ) {
+    this.slide( !this.status );
+  }
 };
 
 /**
@@ -69,6 +96,7 @@ ToggleButton.prototype.bind = function() {
 
 ToggleButton.prototype.slide = function( status ) {
   var pos = status ? 0 : this.offPosition;
-  this.handle.setPosition( pos, this.handle.y );
+  this.handle.setPosition( pos, this.handle.y || 0 );
+  this.status = status;
   this.emit( 'toggle', status ? 'on' : 'off' );
 };

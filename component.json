@@ -10,7 +10,9 @@
     "component/css": "*",
     "mnmly/drag": "*",
     "component/emitter": "*",
-    "component/inherit": "*"
+    "component/inherit": "*",
+    "component/events": "*",
+    "component/classes": "*"
   },
   "development": {},
   "license": "MIT",
