@@ -1,0 +1,23 @@
+{
+  "name": "toggle-button",
+  "repo": "mnmly/toggle-button",
+  "description": "simple toggle button",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "jkroso/computed-style": "*",
+    "component/domify": "*",
+    "component/css": "*",
+    "mnmly/drag": "*",
+    "component/emitter": "*",
+    "component/inherit": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "scripts": [
+    "index.js"
+  ],
+  "styles": [
+    "toggle-button.css"
+  ]
+}

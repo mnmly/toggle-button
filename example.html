@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Example</title>
+    <link rel="stylesheet" href="build/build.css" type="text/css" media="all" />
+    <style type="text/css" media="all">
+      .toggle-button{
+        width: 100px;
+        height: 30px;
+        background: lightgrey;
+        margin: 20px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="toggle-button"></div>
+    <script src="build/build.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+      var ToggleButton = require( 'toggle-button' );
+      toggleButton = new ToggleButton( document.querySelector( '.toggle-button' ) );
+      toggleButton.on( 'toggle', function( status ){
+        console.log( status );
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+@import nib
+
+.toggle-button
+  position: relative
+  overflow: hidden
+  .handle
+    background: lightblue
+    transition transform .3s cubic-bezier(0.625, 0.265, 0.265, 1.550)
+    &.is-dragging
+      transition none

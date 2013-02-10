@@ -1,0 +1,19 @@
+.toggle-button {
+  position: relative;
+  overflow: hidden;
+}
+.toggle-button .handle {
+  background: #add8e6;
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.625, 0.265, 0.265, 1.55);
+  -moz-transition: -moz-transform 0.3s cubic-bezier(0.625, 0.265, 0.265, 1.55);
+  -o-transition: -o-transform 0.3s cubic-bezier(0.625, 0.265, 0.265, 1.55);
+  -ms-transition: -ms-transform 0.3s cubic-bezier(0.625, 0.265, 0.265, 1.55);
+  transition: transform 0.3s cubic-bezier(0.625, 0.265, 0.265, 1.55);
+}
+.toggle-button .handle.is-dragging {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  -ms-transition: none;
+  transition: none;
+}
